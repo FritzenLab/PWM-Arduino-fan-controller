@@ -1,0 +1,118 @@
+
+// Variables used on this code
+
+unsigned long timet;
+unsigned long tempoativo1inicio;
+unsigned long tempoativo2inicio;
+unsigned long tempoativo3inicio;
+unsigned long tempoativo1final;
+unsigned long tempoativo2final;
+unsigned long tempoativo3final;
+unsigned long tempototal1;
+unsigned long tempototal2;
+unsigned long tempototal3;
+
+unsigned long previousTime;
+unsigned long previousTime2;
+unsigned long previousTime3;
+boolean enterFunction = true;
+boolean enterFunction2 = true;
+boolean enterFunction3 = true;
+//-----------------------
+
+
+int pin3 = 3;    // LED connected to digital pin 9
+int pin5 = 5;    // LED connected to digital pin 9
+int pin6 = 6;    // LED connected to digital pin 9
+int pin9 = 9;    // LED connected to digital pin 9
+int pin10 = 10;    // LED connected to digital pin 9
+int pin11 = 11;    // LED connected to digital pin 9
+int potentiometer = A2;
+int potValue = 0;
+
+void setup() {
+  // nothing happens in setup
+}
+
+void loop() {
+
+   timet = micros();
+
+   if (enterFunction == true){
+    previousTime= timet;
+    //Serial.println(previousTime); // for debugging
+
+    // Write your first code below 
+    //-----------------------
+    
+    
+
+    //-----------------------
+    // End of your first code
+  }  
+  
+ if (enterFunction2 == true){
+    previousTime2= timet;
+    //Serial.println(previousTime2); // for debugging
+
+    // Write your second code below 
+    //-----------------------
+    
+    potValue= analogRead(potentiometer);
+    potValue= map(potValue,0,1024,0,255); 
+    analogWrite(pin3, potValue);
+    analogWrite(pin5, potValue);
+    analogWrite(pin6, potValue);
+    analogWrite(pin9, potValue);
+    analogWrite(pin10, potValue);
+    analogWrite(pin11, potValue);
+
+
+    //-----------------------
+    // End of your second code    
+    }   
+  
+    if (enterFunction3 == true){
+    previousTime3= timet;
+       
+    // Write your third code below 
+    //-----------------------
+
+
+
+
+
+    
+    //-----------------------
+   // End of your third code
+   } 
+  
+  
+  
+// The DELAY time is adjusted in the constant below >> 
+  if (timet - previousTime < 5000){ // 1 million microsencods= 1 second delay
+    /* I have actually used 0.999990 seconds, in a trial to compensate the time that
+       this IF function takes to be executed. this is really a point that
+       need improvement in my code */   
+    enterFunction= false;
+  } 
+  else {
+    enterFunction= true;
+  }
+
+  if (timet - previousTime2 < 50000){ // 500,000 microsencods= 0.5 seconds delay
+      enterFunction2= false;
+  } 
+  else {
+    enterFunction2= true;
+  }
+  
+    // The DELAY time is adjusted in the constant below >> 
+  if (timet - previousTime3 < 29990){ // 30,000 microsencods= 30 milisecond delay
+      enterFunction3= false;
+  } 
+  else {
+    enterFunction3= true;
+  }
+  
+}
